@@ -1,5 +1,7 @@
+import ExpenseContainer from './components/Expense/ExpenseContainer';
+import NewExpense from './components/NewExpense/NewExpense';
+
 import './App.css';
-import ExpenseContainer from './components/ExpenseContainer';
 
 function App() {
   const expenses = [
@@ -12,10 +14,9 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-
+    <NewExpense />
     <ExpenseContainer 
     expenses = {expenses}/>
-
       </header>
     </div>
   );

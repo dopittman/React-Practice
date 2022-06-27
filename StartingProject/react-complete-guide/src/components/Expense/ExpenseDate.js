@@ -1,4 +1,4 @@
-import './ComponentCSS/ExpenseDate.css';
+import '../ComponentCSS/ExpenseDate.css';
 
 function ExpenseDate (props) {
 
