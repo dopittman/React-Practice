@@ -11,10 +11,16 @@ function App() {
     {id: "a4", title:"Misc.", amount: 184.34, date: new Date(2021, 2, 28)}
   ];
 
+    const addExpenseHandler = (expense) => {
+      console.log(expense);
+    }
+
   return (
     <div className="App">
       <header className="App-header">
-    <NewExpense />
+    <NewExpense 
+      onAddExpense = {addExpenseHandler}
+      />
     <ExpenseContainer 
     expenses = {expenses}/>
       </header>
