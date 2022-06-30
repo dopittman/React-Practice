@@ -9,7 +9,6 @@ function ExpenseContainer (props){
 
     const filterChangeHandler = (selectedYear) => {
         setFilteredYear(selectedYear);
-        console.log(selectedYear)
       }
 
     return(

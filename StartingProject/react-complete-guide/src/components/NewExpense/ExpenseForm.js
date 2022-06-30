@@ -36,10 +36,8 @@ const ExpenseForm = ( props ) => {
         //     ...userInput,
         //     enteredDate: event.target.value});
         setUserInput((prevState)=>{
-            console.log(new Date(event.target.value))
             return {...prevState, date: new Date(event.target.value + 'T00:00:00')}
         })
-        console.log('Teess'+event.target.value)
     }
 
     const submitHandler = (event) => {
