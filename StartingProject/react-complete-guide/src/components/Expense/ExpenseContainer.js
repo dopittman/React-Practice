@@ -11,13 +11,22 @@ function ExpenseContainer (props){
         setFilteredYear(selectedYear);
       }
 
-      const filteredExpenses = props.expenses.filter(expense => {
-        if (filteredYear === "show-all") {
-            return true;
-        } else {
-            return expense.date.getFullYear().toString() === filteredYear;
-        }
-      });
+    const filteredExpenses = props.expenses
+    .filter(expense => filteredYear === 'show-all' ? true : expense.date.getFullYear().toString() === filteredYear)
+      
+
+
+    let expensesContent = <p>No Expenses Found</p>
+
+    if( filteredExpenses.length > 0 ) {
+        expensesContent = filteredExpenses.map((expense) => ( <ExpenseItem 
+        key = {expense.id}
+        title={expense.title}
+        amount={expense.amount}
+        date={expense.date}
+        />
+        ))
+    }
 
     return(
         <div>
@@ -27,13 +36,9 @@ function ExpenseContainer (props){
                 filterChangeHandler = {filterChangeHandler}
                 selected = {filteredYear}
                 />
-                {filteredExpenses.map((expense) => ( <ExpenseItem 
-                key = {expense.id}
-                title={expense.title}
-                amount={expense.amount}
-                date={expense.date}
-                />
-                ))}
+                {expensesContent}
+                
+                
             </Card>
     </div>
     )
