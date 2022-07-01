@@ -5,11 +5,19 @@ import Card from "../Card";
 import '../ComponentCSS/ExpenseContainer.css'
 
 function ExpenseContainer (props){
-    const [filteredYear, setFilteredYear] = useState("2022")
+    const [filteredYear, setFilteredYear] = useState("show-all")
 
     const filterChangeHandler = (selectedYear) => {
         setFilteredYear(selectedYear);
       }
+
+      const filteredExpenses = props.expenses.filter(expense => {
+        if (filteredYear === "show-all") {
+            return true;
+        } else {
+            return expense.date.getFullYear().toString() === filteredYear;
+        }
+      });
 
     return(
         <div>
@@ -19,7 +27,7 @@ function ExpenseContainer (props){
                 filterChangeHandler = {filterChangeHandler}
                 selected = {filteredYear}
                 />
-                {props.expenses.map((expense) => ( <ExpenseItem 
+                {filteredExpenses.map((expense) => ( <ExpenseItem 
                 key = {expense.id}
                 title={expense.title}
                 amount={expense.amount}
